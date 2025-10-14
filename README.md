@@ -1,73 +1,61 @@
-🧾 BÁO CÁO MÔN HỌC MÁY CƠ BẢN
-🔹 Đề tài:
+# 🧾 BÁO CÁO MÔN HỌC MÁY CƠ BẢN
 
-Phân tích và dự đoán khả năng tốt nghiệp của học sinh dựa trên mô hình thực tế
+---
 
-🧠 I. Mục tiêu đề tài
+<h2>🔹Đề tài:</h2>
+ - Phân tích và dự đoán khả năng tốt nghiệp của học sinh dựa trên mô hình thực tế
 
-Mục tiêu của đề tài là xây dựng một mô hình học máy có khả năng phân tích các yếu tố ảnh hưởng đến việc tốt nghiệp của học sinh/sinh viên, từ đó dự đoán khả năng tốt nghiệp dựa trên dữ liệu về học tập, hành vi, và hoàn cảnh cá nhân.
+<h3>🧠 I. Mục tiêu đề tài</h3>
+ - Mục tiêu của đề tài là xây dựng một mô hình học máy có khả năng phân tích các yếu tố ảnh hưởng đến việc tốt nghiệp của học sinh/sinh viên, từ đó dự đoán khả năng tốt nghiệp dựa trên dữ liệu về học tập, hành vi, và hoàn cảnh cá nhân.
 
-Đề tài nhằm:
+<h3>Đề tài nhằm:</h3>
 
-Hiểu rõ mối quan hệ giữa kết quả học tập, chuyên cần và khả năng hoàn thành khóa học.
+ - Hiểu rõ mối quan hệ giữa kết quả học tập, chuyên cần và khả năng hoàn thành khóa học.
+ - Thử nghiệm một số mô hình học máy phổ biến (Random Forest, Gradient Boosting).
+ - Đánh giá hiệu quả mô hình qua các chỉ số (Accuracy, Precision, Recall, ROC-AUC).
 
-Thử nghiệm một số mô hình học máy phổ biến (Random Forest, Gradient Boosting).
+<h3>📊 II. Dữ liệu sử dụng</h3>
 
-Đánh giá hiệu quả mô hình qua các chỉ số (Accuracy, Precision, Recall, ROC-AUC).
+ - Nguồn dữ liệu: Tự xây dựng mô phỏng dữ liệu thực tế, gồm 1.000 học sinh.
+ - Tỉ lệ tốt nghiệp: 90.5% tốt nghiệp – 9.5% không tốt nghiệp.
+ - Định dạng: CSV (student_graduation.csv) gồm 20 cột dữ liệu.
 
-📊 II. Dữ liệu sử dụng
+| Nhóm đặc trưng | Tên cột | Mô tả |
+|-----------|-----------|-----------|
+| Học tập      | gpa_4, avg_score_10, credits_earned, failures    | GPA, điểm trung bình, tín chỉ tích lũy, số môn rớt     |
+| Thái độ học tập | attendance, absences, study_time_hours_per_week | Tỷ lệ chuyên cần, số buổi nghỉ, thời gian tự học |
+| Hoàn cảnh | family_income, parent_education, scholarship, housing | Kinh tế, học vấn cha mẹ, học bổng, chỗ ở |
+| Khác | mental_health_score, commute_time_min, internet | Tâm lý, thời gian di chuyển, Internet |
+| Nhãn (target) | graduated | 1 = Tốt nghiệp, 0 = Không tốt nghiệp |
 
-Nguồn dữ liệu: Tự xây dựng mô phỏng dữ liệu thực tế, gồm 1.000 học sinh.
 
-Tỉ lệ tốt nghiệp: 90.5% tốt nghiệp – 9.5% không tốt nghiệp.
+<h3>🔍 III. Quy trình thực hiện</h3>
 
-Định dạng: CSV (student_graduation.csv) gồm 20 cột dữ liệu.
+<h4>1. Tiền xử lý dữ liệu</h4>
+ - Chuẩn hóa các giá trị số (StandardScaler).
+ - Mã hóa các biến phân loại (OneHotEncoder).
+ - Chia tập huấn luyện / kiểm tra (train 75% – test 25%).
 
-Nhóm đặc trưng	Tên cột	Mô tả
-Học tập	gpa_4, avg_score_10, credits_earned, failures	GPA, điểm trung bình, tín chỉ tích lũy, số môn rớt
-Thái độ học tập	attendance, absences, study_time_hours_per_week	Tỷ lệ chuyên cần, số buổi nghỉ, thời gian tự học
-Hoàn cảnh	family_income, parent_education, scholarship, housing	Kinh tế, học vấn cha mẹ, học bổng, chỗ ở
-Khác	mental_health_score, commute_time_min, internet	Tâm lý, thời gian di chuyển, Internet
-Nhãn (target)	graduated	1 = Tốt nghiệp, 0 = Không tốt nghiệp
-🔍 III. Quy trình thực hiện
+<h4>2. Huấn luyện mô hình</h4>
 
-Tiền xử lý dữ liệu
+ - So sánh hai mô hình:
+   - Random Forest Classifier (class_weight = balanced)
+   - Gradient Boosting Classifier
 
-Chuẩn hóa các giá trị số (StandardScaler).
+ - Sử dụng GridSearchCV để tìm siêu tham số tốt nhất.
+ - Tiêu chí đánh giá chính: ROC-AUC (độ phân tách 2 lớp).
 
-Mã hóa các biến phân loại (OneHotEncoder).
+<h4>3. Đánh giá mô hình</h4>
 
-Chia tập huấn luyện / kiểm tra (train 75% – test 25%).
+ - Sử dụng các chỉ số:
+   - Accuracy
+   - Precision
+   - Recall
+   - F1-Score
+   - ROC Curve
+   - Confusion Matrix
 
-Huấn luyện mô hình
-
-So sánh hai mô hình:
-
-Random Forest Classifier (class_weight = balanced)
-
-Gradient Boosting Classifier
-
-Sử dụng GridSearchCV để tìm siêu tham số tốt nhất.
-
-Tiêu chí đánh giá chính: ROC-AUC (độ phân tách 2 lớp).
-
-Đánh giá mô hình
-
-Sử dụng các chỉ số:
-
-Accuracy
-
-Precision
-
-Recall
-
-F1-Score
-
-ROC Curve
-
-Confusion Matrix
-
-🤖 IV. Kết quả huấn luyện
+<h3>🤖 IV. Kết quả huấn luyện</h3>
 Mô hình	Tham số tốt nhất	ROC-AUC(test)	Ghi chú
 RandomForest	depth=8, n_estimators=200	0.693	Mô hình tốt nhất
 GradBoost	learning_rate=0.05, depth=5, n_estimators=200	0.665	Dự đoán kém hơn
