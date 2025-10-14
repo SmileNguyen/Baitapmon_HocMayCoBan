@@ -56,111 +56,117 @@
    - Confusion Matrix
 
 <h3>🤖 IV. Kết quả huấn luyện</h3>
-Mô hình	Tham số tốt nhất	ROC-AUC(test)	Ghi chú
-RandomForest	depth=8, n_estimators=200	0.693	Mô hình tốt nhất
-GradBoost	learning_rate=0.05, depth=5, n_estimators=200	0.665	Dự đoán kém hơn
-📄 Báo cáo chi tiết (Random Forest)
-Lớp	Precision	Recall	F1-Score
-0 (Không tốt nghiệp)	0.333	0.042	0.074
-1 (Tốt nghiệp)	0.907	0.991	0.947
-Accuracy tổng thể	0.900		
+
+| Mô hình | Tham số tốt nhất | ROC-AUC(test) | Ghi chú |
+|-----------|-----------|-----------|-----------|
+| RandomForest | depth=8, n_estimators=200 | 0.693 | Mô hình tốt nhất |
+|GradBoost|learning_rate=0.05, depth=5, n_estimators=200|0.665|Dự đoán kém hơn|
+
+<h3>📄 Báo cáo chi tiết (Random Forest)</h3>
+
+
+| Lớp | Precision | Recall | F1-Score |
+|-----------|-----------|-----------|-----------|
+|0 (Không tốt nghiệp)|	0.333|0.042|	0.074 |
+|1 (Tốt nghiệp)|0.907|0.991|	0.947|
+|Accuracy tổng thể|	0.900	|
 
 Confusion Matrix (ngưỡng 0.5):
 
-[[  1  23]
- [  2 224]]
+| Thực tế / Dự đoán | Không tốt nghiệp (0) | Tốt nghiệp (1) |
+|-----------|-----------|-----------|
+|Không tốt nghiệp (0)| 1 | 23|
+|Tốt nghiệp (1)| 2 | 224 |
+	
+ - Mô hình dự đoán chính xác phần lớn học sinh tốt nghiệp.
+ - Tuy nhiên, tỷ lệ phát hiện “không tốt nghiệp” vẫn còn thấp (Recall lớp 0 = 0.04).
 
-
-Mô hình dự đoán chính xác phần lớn học sinh tốt nghiệp.
-
-Tuy nhiên, tỷ lệ phát hiện “không tốt nghiệp” vẫn còn thấp (Recall lớp 0 = 0.04).
-
-📈 V. Biểu đồ minh họa
+<h3>📈 V. Biểu đồ minh họa</h3>
 1️⃣ Biểu đồ ROC Curve (Random Forest – AUC ≈ 0.693)
 
-Mô hình có khả năng phân tách 2 lớp ở mức trung bình khá.
+ - Mô hình có khả năng phân tách 2 lớp ở mức trung bình khá.
 
 (Chèn hình ROC curve từ bước 4)
 
+
 2️⃣ Precision–Recall vs Threshold
 
-Khi threshold giảm, Recall tăng nhanh nhưng Precision giảm.
-Mô hình giữ Precision cao (~0.9) ở threshold thấp, tuy nhiên vẫn thiên lệch về lớp “tốt nghiệp”.
+ - Khi threshold giảm, Recall tăng nhanh nhưng Precision giảm.
+ - Mô hình giữ Precision cao (~0.9) ở threshold thấp, tuy nhiên vẫn thiên lệch về lớp “tốt nghiệp”.
 
 (Chèn hình bạn gửi — Figure 1)
 
+
 3️⃣ Confusion Matrix (Threshold = 0.35)
 
-Mô hình dự đoán toàn bộ học sinh là “tốt nghiệp” → chưa phân biệt được nhóm rủi ro.
+ - Mô hình dự đoán toàn bộ học sinh là “tốt nghiệp” → chưa phân biệt được nhóm rủi ro.
 
 (Chèn hình bạn gửi — Figure 2)
 
+
 4️⃣ Top 10 đặc trưng quan trọng (Random Forest)
 
-GPA, attendance, số tín chỉ tích lũy, số môn rớt và sức khỏe tâm lý có ảnh hưởng mạnh nhất đến kết quả tốt nghiệp.
+ - GPA, attendance, số tín chỉ tích lũy, số môn rớt và sức khỏe tâm lý có ảnh hưởng mạnh nhất đến kết quả tốt nghiệp.
 
 (Nếu bạn chạy phần Feature Importance, có thể thêm biểu đồ này vào)
 
-💬 VI. Nhận xét & Đánh giá
 
-Mô hình Random Forest hoạt động ổn định, có khả năng dự đoán khá tốt nhóm học sinh tốt nghiệp.
+<h3>💬 VI. Nhận xét & Đánh giá</h3>
+ - Mô hình Random Forest hoạt động ổn định, có khả năng dự đoán khá tốt nhóm học sinh tốt nghiệp.
+ - Tuy nhiên, mô hình còn thiếu dữ liệu cho nhóm “không tốt nghiệp”, dẫn đến mất cân bằng nhãn.
+ - Các đặc trưng quan trọng như GPA, attendance, failures, và credits_earned đóng vai trò lớn nhất.
+ - Để cải thiện mô hình:
+   - Thu thập thêm dữ liệu thật của nhóm “không tốt nghiệp”.
+   - Dùng mô hình Boosting (XGBoost / LightGBM).
+   - Áp dụng kỹ thuật oversampling (SMOTE) hoặc tuning threshold.
 
-Tuy nhiên, mô hình còn thiếu dữ liệu cho nhóm “không tốt nghiệp”, dẫn đến mất cân bằng nhãn.
 
-Các đặc trưng quan trọng như GPA, attendance, failures, và credits_earned đóng vai trò lớn nhất.
-
-Để cải thiện mô hình:
-
-Thu thập thêm dữ liệu thật của nhóm “không tốt nghiệp”.
-
-Dùng mô hình Boosting (XGBoost / LightGBM).
-
-Áp dụng kỹ thuật oversampling (SMOTE) hoặc tuning threshold.
-
-🏁 VII. Kết luận
-
+<h3>🏁 VII. Kết luận</h3>
 Đề tài “Phân tích và dự đoán khả năng tốt nghiệp của học sinh” đã minh họa rõ quy trình học máy:
 
-Xây dựng và xử lý dữ liệu.
-
-Chọn và huấn luyện mô hình.
-
-Đánh giá bằng chỉ số và biểu đồ.
+1. Xây dựng và xử lý dữ liệu.
+2. Chọn và huấn luyện mô hình.
+3. Đánh giá bằng chỉ số và biểu đồ.
 
 Dù mô hình chưa đạt độ chính xác tuyệt đối, nhưng đã thể hiện hiểu biết toàn diện về quy trình Machine Learning:
+ - Làm sạch & chuẩn hóa dữ liệu
+ - Chia tập train/test
+ - Huấn luyện mô hình
+ - Đánh giá kết quả
+ - Phân tích & trình bày trực quan
 
-Làm sạch & chuẩn hóa dữ liệu
-
-Chia tập train/test
-
-Huấn luyện mô hình
-
-Đánh giá kết quả
-
-Phân tích & trình bày trực quan
-
-📚 VIII. Hướng phát triển
-
-Tăng kích thước và tính đa dạng của dữ liệu.
-
-Bổ sung yếu tố hành vi học tập thực tế (nộp bài, điểm danh, kết quả từng kỳ).
-
-Xây dựng hệ thống dashboard trực quan (Streamlit/Colab).
-
-Kết hợp mô hình Explainable AI (SHAP, LIME) để giải thích từng dự đoán.
+<h3>📚 VIII. Hướng phát triển</h3>
+ - Tăng kích thước và tính đa dạng của dữ liệu.
+ - Bổ sung yếu tố hành vi học tập thực tế (nộp bài, điểm danh, kết quả từng kỳ).
+ - Xây dựng hệ thống dashboard trực quan (Streamlit/Colab).
+ - Kết hợp mô hình Explainable AI (SHAP, LIME) để giải thích từng dự đoán.
 
 ✅ Phụ lục – Danh sách file thực hiện
-Tên file	Mục đích
-generate_student_data_v2.py	Sinh dữ liệu 1.000 học sinh
-step1_eda_and_baseline.py	Phân tích và mô hình baseline
-step2_eda_models.py	So sánh Logistic, RF, GBoost
-step3_tuning_visuals.py	Tinh chỉnh siêu tham số
-step4_train_newdata.py	Huấn luyện mô hình với dữ liệu thực tế
-step5_threshold_visuals.py	Biểu đồ Precision–Recall, Confusion Matrix
-🎓 Tổng kết ngắn gọn cho báo cáo miệng (nếu có)
+
+| Tên file | Mục đích |
+|-----------|-----------|
+|generate_student_data_v2.py|Sinh dữ liệu 1.000 học sinh|
+|step1_eda_and_baseline.py|Phân tích và mô hình baseline|
+|step2_eda_models.py|So sánh Logistic, RF, GBoost|
+|step3_tuning_visuals.py|Tinh chỉnh siêu tham số|
+|step4_train_newdata.py|Huấn luyện mô hình với dữ liệu thực tế|
+|step5_threshold_visuals.py|Biểu đồ Precision–Recall, Confusion Matrix|
+	
+🎓 Tổng kết ngắn gọn cho báo cáo ~~(nếu có)~~ **(~~đcm~~ phải có nhé ae nhỡ may bị hỏi là ăn ~~cứt~~)**
 
 “Nhóm em xây dựng mô hình học máy để dự đoán khả năng tốt nghiệp.
-Dữ liệu gồm 1.000 học sinh, 20 đặc trưng.
-Mô hình tốt nhất là Random Forest với AUC ≈ 0.69 và Accuracy ≈ 90%.
-Các yếu tố ảnh hưởng mạnh nhất là GPA, Attendance và Failures.
-Kết quả cho thấy mô hình hoạt động ổn định nhưng cần cải thiện khả năng phát hiện nhóm rủi ro.”
+ - Dữ liệu gồm 1.000 học sinh, 20 đặc trưng.
+ - Mô hình tốt nhất là Random Forest với AUC ≈ 0.69 và Accuracy ≈ 90%.
+ - Các yếu tố ảnh hưởng mạnh nhất là GPA, Attendance và Failures.
+ - Kết quả cho thấy mô hình hoạt động ổn định nhưng cần cải thiện khả năng phát hiện nhóm rủi ro.”
+
+---
+
+<h1><p align="center">NOTE</p></h1>
+<p align="center">Cập nhật lần cuối 21:02 - 14/10/2025</p>
+
+1. Tôi cũng đéo hiểu bài báo cáo này làm như thế nào ?
+2. Có gì có thể hỏi tôi **NẾU** tôi biết nhé !
+3. Tôi dùng ngôn ngữ lập trình Python nhé trên Github có ghi đó đừng ai hỏi tôi dùng ngôn ngữ gì nhé 🤔 ?
+4. Text ở trên các ông có thể tổng hợp lại cho vào báo cáo cũng được nhé nhớ lọc á .
+5. Nothing ... chỉ vậy thôi nhé !!!
