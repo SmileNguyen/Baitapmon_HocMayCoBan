@@ -168,5 +168,5 @@ Dù mô hình chưa đạt độ chính xác tuyệt đối, nhưng đã thể h
 1. Tôi cũng đéo hiểu bài báo cáo này làm như thế nào ?
 2. Có gì có thể hỏi tôi **NẾU** tôi biết nhé !
 3. Tôi dùng ngôn ngữ lập trình Python nhé trên Github có ghi đó đừng ai hỏi tôi dùng ngôn ngữ gì nhé 🤔 ?
-4. Text ở trên các ông có thể tổng hợp lại cho vào báo cáo cũng được nhé nhớ lọc á .
+4. Text ở trên các ông có thể tổng hợp lại cho vào báo cáo cũng được nhé nhớ lọc đấy .
 5. Nothing ... chỉ vậy thôi nhé !!!
