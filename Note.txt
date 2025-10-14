@@ -1,0 +1,2 @@
+1. Cài môi trường: pip install pandas scikit-learn matplotlib seaborn
+2. Chạy file step2_eda_models.py: python step2_eda_models.py
