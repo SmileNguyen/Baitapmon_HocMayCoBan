@@ -167,7 +167,7 @@ Dù mô hình chưa đạt độ chính xác tuyệt đối, nhưng đã thể h
 ---
 
 <h1><p align="center">NOTE</p></h1>
-<p align="center">Cập nhật lần cuối 21:02 - 14/10/2025</p>
+<p align="center">Cập nhật lần cuối 14:32 - 15/10/2025</p>
 
 1. Tôi cũng đéo hiểu bài báo cáo này làm như thế nào ?
 2. Có gì có thể hỏi tôi **NẾU** tôi biết nhé !
