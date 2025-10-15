@@ -86,7 +86,7 @@ Confusion Matrix (ngưỡng 0.5):
 
  - Mô hình có khả năng phân tách 2 lớp ở mức trung bình khá.
 
-(Chèn hình ROC curve từ bước 4)
+![Bước 4](./Screenshot/step4.png)
 
 
 2️⃣ Precision–Recall vs Threshold
@@ -94,21 +94,25 @@ Confusion Matrix (ngưỡng 0.5):
  - Khi threshold giảm, Recall tăng nhanh nhưng Precision giảm.
  - Mô hình giữ Precision cao (~0.9) ở threshold thấp, tuy nhiên vẫn thiên lệch về lớp “tốt nghiệp”.
 
-(Chèn hình bạn gửi — Figure 1)
+![Bước 5.1](./Screenshot/step5_1.png)
 
 
 3️⃣ Confusion Matrix (Threshold = 0.35)
 
  - Mô hình dự đoán toàn bộ học sinh là “tốt nghiệp” → chưa phân biệt được nhóm rủi ro.
 
-(Chèn hình bạn gửi — Figure 2)
+![Bước 5.2](./Screenshot/step5_2.png)
 
 
 4️⃣ Top 10 đặc trưng quan trọng (Random Forest)
 
  - GPA, attendance, số tín chỉ tích lũy, số môn rớt và sức khỏe tâm lý có ảnh hưởng mạnh nhất đến kết quả tốt nghiệp.
 
-(Nếu bạn chạy phần Feature Importance, có thể thêm biểu đồ này vào)
+![Bước 3.1](./Screenshot/step3_1.png)
+
+![Bước 3.2](./Screenshot/step3_2.png)
+
+![Bước 3.3](./Screenshot/step3_3.png)
 
 
 <h3>💬 VI. Nhận xét & Đánh giá</h3>
