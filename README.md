@@ -156,7 +156,7 @@ Dù mô hình chưa đạt độ chính xác tuyệt đối, nhưng đã thể h
 |step4_train_newdata.py|Huấn luyện mô hình với dữ liệu thực tế|
 |step5_threshold_visuals.py|Biểu đồ Precision–Recall, Confusion Matrix|
 	
-🎓 Tổng kết ngắn gọn cho báo cáo ~~(nếu có)~~ **(~~đcm~~ phải có nhé ae nhỡ may bị hỏi là ăn ~~cứt~~)**
+🎓 Tổng kết ngắn gọn cho báo cáo ~~(nếu có)~~
 
 “Nhóm em xây dựng mô hình học máy để dự đoán khả năng tốt nghiệp.
  - Dữ liệu gồm 1.000 học sinh, 20 đặc trưng.
